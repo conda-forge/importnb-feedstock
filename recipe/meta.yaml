@@ -44,7 +44,7 @@ test:
   imports:
     - importnb
   commands:
-    - importnb --help
+    - importnb-run --help
     - importnb-install --help
     - importnb-uninstall --help
     - nbdoctest --help
