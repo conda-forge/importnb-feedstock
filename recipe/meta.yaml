@@ -9,6 +9,7 @@ source:
   sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
 
 build:
+  skip: true  # [py<34]
   number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
@@ -18,13 +19,13 @@ build:
 
 requirements:
   host:
-    - python >=3
+    - python
     - pip
     - pytest-runner
     - wheel >=0.31.0
     - twine >=1.11.0
   run:
-    - python >=3
+    - python
     - setuptools
     - dataclasses  # [py<37]
     - importlib_resources  # [py<37]
@@ -46,7 +47,7 @@ about:
   license_file: LICENSE
   summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
   doc_url: https://importnb.readthedocs.io
-  description: >
+  description: |
     importnb imports notebooks as modules. Notebooks are reusable as tests,
     source code, importable modules, and command line utilities.
 
