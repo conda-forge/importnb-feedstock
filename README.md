@@ -13,7 +13,8 @@ Feedstock license: BSD 3-Clause
 
 Summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
 
-importnb imports notebooks as modules. Notebooks are reusable as tests, source code, importable modules, and command line utilities.
+importnb imports notebooks as modules. Notebooks are reusable as tests,
+source code, importable modules, and command line utilities.
 
 
 Current build status
