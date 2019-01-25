@@ -5,13 +5,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
-  sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
+  - url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
+    sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
+    folder: dist
+  - url: https://github.com/deathbeds/importnb/archive/{{ version }}.tar.gz
+    sha256: 8dd15f10df7cacd1da1a0cf6a22075d6d8d63c8ac0489ca79986e20ce53d5578
+    folder: src
 
 build:
-  number: 0
-  noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 1
+  script:
+    - cd dist
+    - {{ PYTHON }} -m pip install . --no-deps -vv
+  entry_points:
+    - importnb-install = importnb.utils.ipython:install
+    - importnb-uninstall = importnb.utils.ipython:uninstall
+    - importnb-run = importnb.loader:main
+    - nbdoctest = importnb.utils.nbdoctest:_test
 
 requirements:
   host:
@@ -23,21 +33,35 @@ requirements:
   run:
     - python >=3
     - setuptools
-    - dataclasses
-    - nbconvert
-    # importlib_resources will be [not py>36] and this will be arch again :-(
-    - importlib_resources
+    - dataclasses  # [py<37]
+    - importlib_resources  # [py<37]
 
 test:
+  source_files:
+    - src/tests
+  requires:
+    - pytest
   imports:
     - importnb
+  commands:
+    - importnb --help
+    - importnb-install --help
+    - importnb-uninstall --help
+    - nbdoctest --help
+    - pytest
 
 about:
   home: https://github.com/deathbeds/importnb
-  license: BSD 3-Clause
-  license_file: LICENSE
-  summary: Import .ipynb files as modules in the system path
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: dist/LICENSE
+  summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
+  doc_url: https://importnb.readthedocs.io
+  description: >
+    importnb imports notebooks as modules. Notebooks are reusable as tests,
+    source code, importable modules, and command line utilities.
 
 extra:
   recipe-maintainers:
     - ocefpaf
+    - bollwyvl
