@@ -20,7 +20,6 @@ build:
   entry_points:
     - importnb-install = importnb.utils.ipython:install
     - importnb-uninstall = importnb.utils.ipython:uninstall
-    - importnb-run = importnb.loader:main
     - nbdoctest = importnb.utils.nbdoctest:_test
 
 requirements:
@@ -44,7 +43,6 @@ test:
   imports:
     - importnb
   commands:
-    - importnb-run --help
     - importnb-install --help
     - importnb-uninstall --help
     - nbdoctest --help
