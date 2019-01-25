@@ -5,18 +5,12 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
-    sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
-    folder: dist
-  - url: https://github.com/deathbeds/importnb/archive/{{ version }}.tar.gz
-    sha256: 8dd15f10df7cacd1da1a0cf6a22075d6d8d63c8ac0489ca79986e20ce53d5578
-    folder: src
+  url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
+  sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
 
 build:
   number: 1
-  script:
-    - cd dist
-    - {{ PYTHON }} -m pip install . --no-deps -vv
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   entry_points:
     - importnb-install = importnb.utils.ipython:install
     - importnb-uninstall = importnb.utils.ipython:uninstall
@@ -36,17 +30,12 @@ requirements:
     - importlib_resources  # [py<37]
 
 test:
-  source_files:
-    - src/tests
-  requires:
-    - pytest
   imports:
     - importnb
   commands:
     - importnb-install --help
     - importnb-uninstall --help
     - nbdoctest --help
-    - pytest
 
 about:
   home: https://github.com/deathbeds/importnb
