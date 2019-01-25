@@ -30,6 +30,8 @@ requirements:
     - importlib_resources  # [py<37]
 
 test:
+  requires:
+    - ipython
   imports:
     - importnb
   commands:
