@@ -9,35 +9,49 @@ source:
   sha256: 96e93f51dec170e739b79d588fe48d26f6dd3f2f787562a45ba55e2e541cac59
 
 build:
-  number: 0
-  noarch: python
+  skip: true  # [py<34]
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  entry_points:
+    - importnb-install = importnb.utils.ipython:install
+    - importnb-uninstall = importnb.utils.ipython:uninstall
+    - nbdoctest = importnb.utils.nbdoctest:_test
 
 requirements:
   host:
-    - python >=3
+    - python
     - pip
     - pytest-runner
     - wheel >=0.31.0
     - twine >=1.11.0
   run:
-    - python >=3
+    - python
     - setuptools
-    - dataclasses
-    - nbconvert
-    # importlib_resources will be [not py>36] and this will be arch again :-(
-    - importlib_resources
+    - dataclasses  # [py<37]
+    - importlib_resources  # [py<37]
 
 test:
+  requires:
+    - ipython
   imports:
     - importnb
+  commands:
+    - importnb-install --help
+    - importnb-uninstall --help
+    - nbdoctest --help
 
 about:
   home: https://github.com/deathbeds/importnb
-  license: BSD 3-Clause
+  license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
-  summary: Import .ipynb files as modules in the system path
+  summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
+  doc_url: https://importnb.readthedocs.io
+  description: |
+    importnb imports notebooks as modules. Notebooks are reusable as tests,
+    source code, importable modules, and command line utilities.
 
 extra:
   recipe-maintainers:
     - ocefpaf
+    - bollwyvl

@@ -1,23 +1,28 @@
+<!--
+# -*- mode: jinja -*-
+-->
+
 About importnb
 ==============
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
-
 Home: https://github.com/deathbeds/importnb
 
-Package license: BSD 3-Clause
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
-Summary: Import .ipynb files as modules in the system path
+Summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
 
+importnb imports notebooks as modules. Notebooks are reusable as tests,
+source code, importable modules, and command line utilities.
 
 
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/importnb-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/importnb-feedstock)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/importnb-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/importnb-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/importnb-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/importnb-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/importnb-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/importnb-feedstock/branch/master)
 
 Current release info
 ====================
@@ -50,6 +55,8 @@ conda search importnb --channel conda-forge
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -109,5 +116,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bollwyvl](https://github.com/bollwyvl/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 
