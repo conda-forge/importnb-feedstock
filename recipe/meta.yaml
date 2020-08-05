@@ -1,4 +1,4 @@
-{% set version = "0.6.1" %}
+{% set version = "0.6.2" %}
 
 package:
   name: importnb
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
-  sha256: 3eb4fd366b14c554fad4bc50d5ea8de0854d09ad2bb09b61f1fdd002b0bb052e
+  sha256: 255973c6285c8a96d95012f1612ab5ba0b089e5a467386544d25cbff9c0dc1ac
 
 build:
   skip: true  # [py<34]
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - importnb-install = importnb.utils.ipython:install
