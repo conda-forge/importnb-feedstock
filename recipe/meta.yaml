@@ -13,36 +13,30 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
   entry_points:
-    - importnb-install = importnb.utils.ipython:install
-    - importnb-uninstall = importnb.utils.ipython:uninstall
-    - nbdoctest = importnb.utils.nbdoctest:_test
+    - importnb = importnb.__main__:main
 
 requirements:
   host:
-    - python >=3.6
+    - hatch-vcs
+    - hatchling
     - pip
+    - python >=3.7
   run:
-    - python >=3.6
-    - setuptools
-    - dataclasses
-    - importlib_resources
+    - python >=3.7
 
 test:
-  requires:
-    - ipython
   imports:
     - importnb
   commands:
-    - importnb-install --help
-    - importnb-uninstall --help
-    - nbdoctest --help
+    - importnb --help
+    - importnb --version
 
 about:
   home: https://github.com/deathbeds/importnb
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
+  summary: importnb imports notebooks as python modules.
   doc_url: https://importnb.readthedocs.io
   doc_source_url: https://github.com/deathbeds/importnb/tree/{{ version }}/docs
   description: |
