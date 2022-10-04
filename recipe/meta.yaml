@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 
 package:
   name: importnb
@@ -6,48 +6,51 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
-  sha256: 067289b46ea412def63b4bb9b28e15f659badf4176defe5bd75ffd8078040a0e
+  sha256: 96a0fe94d23ca2c4acc51455836ff1b2bad8ac4bf51ce67d9e75294d59054cc0
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
   entry_points:
-    - importnb-install = importnb.utils.ipython:install
-    - importnb-uninstall = importnb.utils.ipython:uninstall
-    - nbdoctest = importnb.utils.nbdoctest:_test
+    - importnb = importnb.__main__:main
 
 requirements:
   host:
-    - python >=3.6
+    - hatch-vcs
+    - hatchling
     - pip
+    - python >=3.7
   run:
-    - python >=3.6
-    - setuptools
-    - dataclasses
-    - importlib_resources
+    - python >=3.7
 
 test:
+  files:
+    - test_importnb.ipynb
   requires:
-    - ipython
+    - coverage
+    - pip
+    - pytest
   imports:
     - importnb
   commands:
-    - importnb-install --help
-    - importnb-uninstall --help
-    - nbdoctest --help
+    - pip check
+    {% set cov = 'coverage run --source=importnb --omit="*json_parser*" --branch --append -m' %}
+    - {{ cov }} importnb --help
+    - {{ cov }} importnb -m test_importnb
+    - {{ cov }} pytest -vv --doctest-modules
+    - coverage report --show-missing --skip-covered --fail-under=71
 
 about:
   home: https://github.com/deathbeds/importnb
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
+  summary: import jupyter notebooks as python modules and scripts.
   doc_url: https://importnb.readthedocs.io
   doc_source_url: https://github.com/deathbeds/importnb/tree/{{ version }}/docs
   description: |
-    importnb imports notebooks as modules. Notebooks are reusable as tests,
-    source code, importable modules, and command line utilities.
+    importnb imports notebooks as python modules.
 
 extra:
   recipe-maintainers:
