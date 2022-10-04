@@ -25,23 +25,25 @@ requirements:
     - python >=3.7
 
 test:
+  requires:
+    - pip
   imports:
     - importnb
   commands:
+    - pip check
     - importnb --help
-    - importnb --version
+    - python -c "v = __import__('importnb._version')._version.__version__; print(v); assert v == '{{ version }}'"
 
 about:
   home: https://github.com/deathbeds/importnb
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: importnb imports notebooks as python modules.
+  summary: import jupyter notebooks as python modules and scripts.
   doc_url: https://importnb.readthedocs.io
   doc_source_url: https://github.com/deathbeds/importnb/tree/{{ version }}/docs
   description: |
-    importnb imports notebooks as modules. Notebooks are reusable as tests,
-    source code, importable modules, and command line utilities.
+    importnb imports notebooks as python modules.
 
 extra:
   recipe-maintainers:
