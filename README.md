@@ -7,12 +7,11 @@ Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/importnb-feedstock/blob/main/LICENSE.txt)
 
-Summary: Import Jupyter (ne IPython) notebooks into tests and scripts.
+Summary: import jupyter notebooks as python modules and scripts.
 
 Documentation: https://importnb.readthedocs.io
 
-importnb imports notebooks as modules. Notebooks are reusable as tests,
-source code, importable modules, and command line utilities.
+importnb imports notebooks as python modules.
 
 
 Current build status
