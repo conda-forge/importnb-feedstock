@@ -1,4 +1,3 @@
-{% set cov = "coverage run --source=importnb --omit=\"*json_parser*\" --branch --append -m" %}
 {% set version = "2022.10.24" %}
 
 package:
