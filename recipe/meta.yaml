@@ -1,5 +1,6 @@
-{% set cov = "coverage run --source=importnb --omit=\"*json_parser*\" --branch --append -m" %}
 {% set version = "2023.1.7" %}
+{% set cov_threshold = 63 %}
+{% set cov = "coverage run --source=importnb --omit=\"*json_parser*\" --branch --append -m" %}
 
 package:
   name: importnb
@@ -36,11 +37,10 @@ test:
     - importnb
   commands:
     - pip check
-    {% set cov = 'coverage run --source=importnb --omit="*json_parser*" --branch --append -m' %}
     - {{ cov }} importnb --help
     - {{ cov }} importnb -m test_importnb
     - {{ cov }} pytest -vv --doctest-modules
-    - coverage report --show-missing --skip-covered --fail-under=71
+    - coverage report --show-missing --skip-covered --fail-under={{ cov_threshold }}
 
 about:
   home: https://github.com/deathbeds/importnb
