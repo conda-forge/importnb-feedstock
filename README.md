@@ -1,11 +1,11 @@
-About importnb
-==============
+About importnb-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/importnb-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/deathbeds/importnb
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/importnb-feedstock/blob/main/LICENSE.txt)
 
 Summary: import jupyter notebooks as python modules and scripts.
 
