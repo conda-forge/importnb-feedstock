@@ -11,9 +11,6 @@ Summary: import jupyter notebooks as python modules and scripts.
 
 Documentation: https://importnb.readthedocs.io
 
-importnb imports notebooks as python modules.
-
-
 Current build status
 ====================
 
@@ -33,6 +30,11 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-importnb-green.svg)](https://anaconda.org/conda-forge/importnb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb.svg)](https://anaconda.org/conda-forge/importnb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb.svg)](https://anaconda.org/conda-forge/importnb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb.svg)](https://anaconda.org/conda-forge/importnb) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-importnb--with--all-green.svg)](https://anaconda.org/conda-forge/importnb-with-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb-with-all.svg)](https://anaconda.org/conda-forge/importnb-with-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb-with-all.svg)](https://anaconda.org/conda-forge/importnb-with-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb-with-all.svg)](https://anaconda.org/conda-forge/importnb-with-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-importnb--with--doit-green.svg)](https://anaconda.org/conda-forge/importnb-with-doit) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb-with-doit.svg)](https://anaconda.org/conda-forge/importnb-with-doit) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb-with-doit.svg)](https://anaconda.org/conda-forge/importnb-with-doit) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb-with-doit.svg)](https://anaconda.org/conda-forge/importnb-with-doit) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-importnb--with--ipython-green.svg)](https://anaconda.org/conda-forge/importnb-with-ipython) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb-with-ipython.svg)](https://anaconda.org/conda-forge/importnb-with-ipython) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb-with-ipython.svg)](https://anaconda.org/conda-forge/importnb-with-ipython) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb-with-ipython.svg)](https://anaconda.org/conda-forge/importnb-with-ipython) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-importnb--with--toml-green.svg)](https://anaconda.org/conda-forge/importnb-with-toml) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb-with-toml.svg)](https://anaconda.org/conda-forge/importnb-with-toml) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb-with-toml.svg)](https://anaconda.org/conda-forge/importnb-with-toml) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb-with-toml.svg)](https://anaconda.org/conda-forge/importnb-with-toml) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-importnb--with--yaml-green.svg)](https://anaconda.org/conda-forge/importnb-with-yaml) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/importnb-with-yaml.svg)](https://anaconda.org/conda-forge/importnb-with-yaml) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/importnb-with-yaml.svg)](https://anaconda.org/conda-forge/importnb-with-yaml) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/importnb-with-yaml.svg)](https://anaconda.org/conda-forge/importnb-with-yaml) |
 
 Installing importnb
 ===================
@@ -44,16 +46,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `importnb` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `importnb, importnb-with-all, importnb-with-doit, importnb-with-ipython, importnb-with-toml, importnb-with-yaml` can be installed with `conda`:
 
 ```
-conda install importnb
+conda install importnb importnb-with-all importnb-with-doit importnb-with-ipython importnb-with-toml importnb-with-yaml
 ```
 
 or with `mamba`:
 
 ```
-mamba install importnb
+mamba install importnb importnb-with-all importnb-with-doit importnb-with-ipython importnb-with-toml importnb-with-yaml
 ```
 
 It is possible to list all of the versions of `importnb` available on your platform with `conda`:
