@@ -1,4 +1,5 @@
-{% set version = "2023.1.7" %}
+{% set cov = "coverage run --source=importnb --omit=\"*json_parser*\" --branch --append -m" %}
+{% set version = "2023.11.1" %}
 {% set cov_threshold = 63 %}
 {% set cov = "coverage run --source=importnb --omit=\"*json_parser*\" --branch --append -m" %}
 
@@ -8,7 +9,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
-  sha256: 5aee93391b7f7ac082211061376758f3d2319b12d9e822d3367e55bc125110b7
+  sha256: 95a745ac7299a81f776e8210e8ad77f05731dfce7bad79eb85e08ed37a2488c0
 
 build:
   number: 0
