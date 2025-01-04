@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/i/importnb/importnb-{{ version }}.tar.gz
   sha256: 95a745ac7299a81f776e8210e8ad77f05731dfce7bad79eb85e08ed37a2488c0
 
 build:
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
@@ -39,6 +39,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -57,6 +58,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -75,6 +77,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -93,6 +96,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -111,6 +115,7 @@ outputs:
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -140,6 +145,7 @@ outputs:
         - pip
         - pytest
         - tomli-w
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
