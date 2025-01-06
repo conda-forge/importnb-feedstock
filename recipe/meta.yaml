@@ -1,62 +1,56 @@
 {% set version = "2023.11.1" %}
-{% set min_python = "python >=3.8" %}
+
+{% set PYTHON = PYTHON | default("$PYTHON") %}
 
 package:
   name: importnb
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/i/importnb/importnb-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/i/importnb/importnb-{{ version }}.tar.gz
   sha256: 95a745ac7299a81f776e8210e8ad77f05731dfce7bad79eb85e08ed37a2488c0
 
 build:
-  number: 0
+  number: 1
   noarch: python
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+  entry_points:
+    - importnb = importnb.__main__:main
 
 requirements:
   host:
-    - {{ min_python }}
+    - hatch-vcs
+    - hatchling
+    - pip
+    - python {{ python_min }}
   run:
-    - {{ min_python }}
+    - python >={{ python_min }}
+    - importlib-metadata >=4.8.3
+
+test:
+  requires:
+    - pip
+    - python {{ python_min }}
+  imports:
+    - importnb
+  commands:
+    - pip check
 
 outputs:
   - name: importnb
-    build:
-      noarch: python
-      script:
-        - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-      entry_points:
-        - importnb = importnb.__main__:main
-    requirements:
-      host:
-        - {{ min_python }}
-        - hatch-vcs
-        - hatchling
-        - pip
-      run:
-        - {{ min_python }}
-        - importlib-metadata >=4.8.3
-    test:
-      requires:
-        - pip
-      imports:
-        - importnb
-      commands:
-        - pip check
 
   - name: importnb-with-toml
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage("importnb", exact=True) }}
         - tomli
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -64,17 +58,15 @@ outputs:
 
   - name: importnb-with-yaml
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage("importnb", exact=True) }}
         - ruamel.yaml
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -82,17 +74,15 @@ outputs:
 
   - name: importnb-with-ipython
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage("importnb", exact=True) }}
         - ipython
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -100,17 +90,15 @@ outputs:
 
   - name: importnb-with-doit
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage("importnb", exact=True) }}
         - doit
     test:
       requires:
         - pip
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
@@ -118,12 +106,9 @@ outputs:
 
   - name: importnb-with-all
     build:
-      noarch: python
+      noarch: generic
     requirements:
-      host:
-        - {{ min_python }}
       run:
-        - {{ min_python }}
         - {{ pin_subpackage("importnb-with-doit", exact=True) }}
         - {{ pin_subpackage("importnb-with-ipython", exact=True) }}
         - {{ pin_subpackage("importnb-with-toml", exact=True) }}
@@ -140,6 +125,7 @@ outputs:
         - pip
         - pytest
         - tomli-w
+        - python {{ python_min }}
       imports:
         - importnb
       commands:
